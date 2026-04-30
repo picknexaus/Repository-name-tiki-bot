@@ -1,9 +1,9 @@
 name: Tiki Bot Auto
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 9 * * *"
-  workflow_dispatch:
 
 jobs:
   build:
@@ -18,8 +18,10 @@ jobs:
 
       - run: npm install
 
-      - run: node bot.js
+      - name: Run bot
+        run: node bot.js
         env:
           WP_URL: ${{ secrets.WP_URL }}
           USER: ${{ secrets.USER }}
           APP_PASS: ${{ secrets.APP_PASS }}
+        
