@@ -1,9 +1,7 @@
-name: Auto Affiliate Bot
+name: Affiliate Bot
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 9 * * *"
 
 jobs:
   run:
