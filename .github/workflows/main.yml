@@ -1,4 +1,4 @@
-name: Tiki Bot Auto
+name: Auto Affiliate Bot
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: "0 9 * * *"
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,10 +16,9 @@ jobs:
         with:
           node-version: 18
 
-      - run: npm install
+      - run: npm install axios
 
-      - name: Run bot
-        run: node bot.js
+      - run: node bot.js
         env:
           WP_URL: ${{ secrets.WP_URL }}
           USER: ${{ secrets.USER }}
