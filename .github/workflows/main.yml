@@ -1,4 +1,4 @@
-name: Affiliate Bot
+name: Auto Affiliate Bot
 
 on:
   workflow_dispatch:
