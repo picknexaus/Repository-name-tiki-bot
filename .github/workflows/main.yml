@@ -24,4 +24,3 @@ jobs:
           WP_URL: ${{ secrets.WP_URL }}
           USER: ${{ secrets.USER }}
           APP_PASS: ${{ secrets.APP_PASS }}
-        
