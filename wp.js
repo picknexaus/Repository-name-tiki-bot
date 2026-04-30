@@ -1,14 +1,17 @@
 const axios = require("axios");
 
-const WP_URL = "https://yourdomain.com/wp-json/wp/v2/posts"; 
+// ⚠️ SỬA 2 CHỖ NÀY
+const WP_URL = "https://YOUR-DOMAIN.com/wp-json/wp/v2/posts";
 const USER = "admin";
-const APP_PASS = "xxxx xxxx xxxx xxxx";
+
+// 👉 DÁN APP PASSWORD VÀO ĐÂY
+const APP_PASS = "PASTE_APP_PASSWORD_HERE";
 
 async function postToWP(title, content) {
   const auth = Buffer.from(`${USER}:${APP_PASS}`).toString("base64");
 
   try {
-    const res = await axios.post(
+    await axios.post(
       WP_URL,
       {
         title,
@@ -17,14 +20,15 @@ async function postToWP(title, content) {
       },
       {
         headers: {
-          Authorization: `Basic ${auth}`
+          Authorization: `Basic ${auth}`,
+          "Content-Type": "application/json"
         }
       }
     );
 
-    console.log("✅ Posted:", title);
+    console.log("✅ Đăng bài thành công:", title);
   } catch (err) {
-    console.log("❌ Error post:", err.message);
+    console.log("❌ Lỗi:", err.response?.data || err.message);
   }
 }
 
